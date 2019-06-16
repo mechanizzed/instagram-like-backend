@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoogse = require("mongoose");
+const path = require("path");
 
 const app = express();
 
@@ -10,5 +11,9 @@ mongoogse.connect(
   }
 );
 
+app.use(
+  "/posts/files",
+  express.static(path.resolve(__dirname, "..", "uploads", "posts", "resized"))
+);
 app.use(require("./routes"));
 app.listen(3333);

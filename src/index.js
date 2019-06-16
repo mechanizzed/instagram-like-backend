@@ -4,7 +4,9 @@ const path = require("path");
 const cors = require("cors");
 
 const app = express();
+const server = require("http").Server(app);
 
+// database
 mongoogse.connect(
   "mongodb+srv://mechanizzed:mechanizzed@cluster0-ztaou.mongodb.net/test?retryWrites=true&w=majority",
   {
@@ -18,4 +20,5 @@ app.use(
   express.static(path.resolve(__dirname, "..", "uploads", "posts", "resized"))
 );
 app.use(require("./routes"));
-app.listen(3333);
+
+server.listen(3333);

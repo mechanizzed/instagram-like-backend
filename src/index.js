@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoogse = require("mongoose");
 const path = require("path");
+const cors = require("cors");
 
 const app = express();
 
@@ -11,6 +12,7 @@ mongoogse.connect(
   }
 );
 
+app.use(cors());
 app.use(
   "/posts/files",
   express.static(path.resolve(__dirname, "..", "uploads", "posts", "resized"))
